@@ -4,19 +4,31 @@ import { storeInfo } from '@/lib/data';
 export default function Footer() {
   return (
     <footer className="bg-charcoal-950 text-cream-100">
-      {/* Decorative top border with Indian-inspired pattern */}
-      <div className="h-2 bg-gradient-to-r from-saffron-500 via-gold-500 to-burgundy-600" />
+      {/* Decorative top border with vibrant rainbow gradient */}
+      <div className="h-2 bg-gradient-to-r from-saffron-500 via-burgundy-500 to-forest-500" />
+      <div className="h-1 bg-gradient-to-r from-forest-400 via-gold-400 to-saffron-400" />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              {/* Logo mark */}
+              {/* Logo mark with gradient */}
               <div className="relative w-8 h-8">
                 <svg viewBox="0 0 40 40" className="w-full h-full">
-                  <circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" strokeWidth="1" className="text-gold-500" />
-                  <circle cx="20" cy="20" r="6" fill="currentColor" className="text-gold-500" />
+                  <defs>
+                    <linearGradient id="footerGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#f6a54b" />
+                      <stop offset="50%" stopColor="#e05270" />
+                      <stop offset="100%" stopColor="#4d8776" />
+                    </linearGradient>
+                    <linearGradient id="footerGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#e05270" />
+                      <stop offset="100%" stopColor="#dcba39" />
+                    </linearGradient>
+                  </defs>
+                  <circle cx="20" cy="20" r="18" fill="none" stroke="url(#footerGrad1)" strokeWidth="1.5" />
+                  <circle cx="20" cy="20" r="6" fill="url(#footerGrad1)" />
                   {[0, 45, 90, 135, 180, 225, 270, 315].map((angle) => (
                     <ellipse
                       key={angle}
@@ -25,15 +37,14 @@ export default function Footer() {
                       rx="3"
                       ry="6"
                       fill="none"
-                      stroke="currentColor"
+                      stroke="url(#footerGrad2)"
                       strokeWidth="1"
-                      className="text-gold-400/50"
                       transform={`rotate(${angle} 20 20)`}
                     />
                   ))}
                 </svg>
               </div>
-              <span className="font-display text-xl font-semibold text-cream-100">
+              <span className="font-display text-xl font-semibold gradient-text-celebration">
                 {storeInfo.name}
               </span>
             </div>
@@ -47,7 +58,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-display text-lg font-semibold text-gold-400 mb-6">
+            <h3 className="font-display text-lg font-semibold mb-6 gradient-text-sunset">
               Explore
             </h3>
             <ul className="space-y-3">
@@ -71,7 +82,7 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="font-display text-lg font-semibold text-gold-400 mb-6">
+            <h3 className="font-display text-lg font-semibold mb-6 gradient-text-vibrant">
               Connect
             </h3>
             <div className="space-y-4">
@@ -93,17 +104,18 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Indian-inspired decorative element */}
-            <div className="mt-8 flex gap-2">
+            {/* Indian-inspired decorative element - larger and more vibrant */}
+            <div className="mt-8 flex gap-3">
               {['saffron', 'gold', 'burgundy', 'forest'].map((color, i) => (
                 <div
                   key={color}
-                  className={`w-2 h-2 rounded-full ${
-                    i === 0 ? 'bg-saffron-500' :
-                    i === 1 ? 'bg-gold-500' :
-                    i === 2 ? 'bg-burgundy-500' :
-                    'bg-forest-500'
+                  className={`w-3 h-3 rounded-full animate-float ${
+                    i === 0 ? 'bg-gradient-to-br from-saffron-400 to-saffron-600' :
+                    i === 1 ? 'bg-gradient-to-br from-gold-400 to-gold-600' :
+                    i === 2 ? 'bg-gradient-to-br from-burgundy-400 to-burgundy-600' :
+                    'bg-gradient-to-br from-forest-400 to-forest-600'
                   }`}
+                  style={{ animationDelay: `${i * 0.5}s` }}
                 />
               ))}
             </div>

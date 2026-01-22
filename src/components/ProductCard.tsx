@@ -25,7 +25,7 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
 
   return (
     <article
-      className="group card-hover bg-white rounded-2xl overflow-hidden premium-shadow"
+      className="group card-hover bg-white rounded-2xl overflow-hidden premium-shadow relative"
       style={{ animationDelay: `${index * 100}ms` }}
     >
       {/* Image Container */}
@@ -38,20 +38,23 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
 
-        {/* Featured badge */}
+        {/* Subtle dark overlay on hover for button visibility */}
+        <div className="absolute inset-0 bg-charcoal-900/0 group-hover:bg-charcoal-900/20 transition-all duration-500" />
+
+        {/* Featured badge - now with gradient */}
         {product.featured && (
           <div className="absolute top-4 left-4">
-            <span className="px-3 py-1 bg-gold-500/90 backdrop-blur-sm text-white text-xs font-body font-medium rounded-full">
+            <span className="px-3 py-1 bg-gradient-to-r from-saffron-500 to-burgundy-500 backdrop-blur-sm text-white text-xs font-body font-medium rounded-full shadow-lg">
               Featured
             </span>
           </div>
         )}
 
         {/* Quick view overlay */}
-        <div className="absolute inset-0 bg-charcoal-950/0 group-hover:bg-charcoal-950/20 transition-all duration-500 flex items-center justify-center">
+        <div className="absolute inset-0 flex items-center justify-center">
           <Link
             href={`/${product.category}/${product.id}`}
-            className="opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 px-6 py-2.5 bg-white/95 backdrop-blur-sm text-charcoal-900 font-body text-sm font-medium rounded-full hover:bg-white"
+            className="opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 px-6 py-2.5 bg-gradient-to-r from-white/95 to-cream-100/95 backdrop-blur-sm text-charcoal-900 font-body text-sm font-medium rounded-full hover:from-white hover:to-white shadow-lg"
           >
             View Details
           </Link>
@@ -61,12 +64,16 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
       {/* Content */}
       <div className="p-6">
         <div className="mb-3">
-          <span className="text-xs font-body text-gold-600 uppercase tracking-widest">
+          <span className={`text-xs font-body uppercase tracking-widest font-semibold ${
+            product.category === 'paintings'
+              ? 'gradient-text-sunset'
+              : 'gradient-text-vibrant'
+          }`}>
             {product.category === 'paintings' ? 'Original Painting' : 'Handcrafted Jewelry'}
           </span>
         </div>
 
-        <h3 className="font-display text-xl font-semibold text-charcoal-900 mb-2 group-hover:text-gold-700 transition-colors">
+        <h3 className="font-display text-xl font-semibold text-charcoal-900 mb-2 group-hover:gradient-text-vibrant transition-all duration-300">
           {product.name}
         </h3>
 
@@ -103,7 +110,7 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
         {/* Price and CTA */}
         <div className="flex items-center justify-between pt-4 border-t border-cream-200">
           <div>
-            <span className="font-display text-2xl font-semibold text-charcoal-900">
+            <span className="font-display text-2xl font-semibold gradient-text-celebration">
               ${product.price}
             </span>
             <span className="text-sm text-charcoal-500 ml-1">{product.currency}</span>
@@ -111,7 +118,11 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
 
           <button
             onClick={handleOrderClick}
-            className="px-5 py-2.5 bg-gradient-to-r from-burgundy-600 to-burgundy-700 text-white font-body text-sm font-medium rounded-full hover:from-burgundy-700 hover:to-burgundy-800 transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105"
+            className={`px-5 py-2.5 text-white font-body text-sm font-medium rounded-full transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105 ${
+              product.category === 'paintings'
+                ? 'bg-gradient-to-r from-saffron-500 via-burgundy-500 to-burgundy-600 hover:from-saffron-600 hover:via-burgundy-600 hover:to-burgundy-700'
+                : 'bg-gradient-to-r from-forest-500 via-forest-600 to-gold-500 hover:from-forest-600 hover:via-forest-700 hover:to-gold-600'
+            }`}
           >
             Order Now
           </button>

@@ -132,6 +132,139 @@ body {
   .card-hover:hover {
     transform: translateY(-8px);
   }
+
+  /* Vibrant multi-color gradients */
+  .gradient-sunset {
+    background: linear-gradient(135deg, #f6a54b 0%, #e05270 50%, #cc325a 100%);
+  }
+
+  .gradient-indian-summer {
+    background: linear-gradient(135deg, #f38c28 0%, #e05270 35%, #ab2549 70%, #722039 100%);
+  }
+
+  .gradient-forest-gold {
+    background: linear-gradient(135deg, #4d8776 0%, #6da392 30%, #dcba39 70%, #cca32c 100%);
+  }
+
+  .gradient-celebration {
+    background: linear-gradient(135deg, #f6a54b 0%, #e05270 25%, #ab2549 50%, #4d8776 75%, #dcba39 100%);
+  }
+
+  .gradient-heritage {
+    background: linear-gradient(135deg, #f9c08a 0%, #ed7f94 30%, #cc325a 60%, #6da392 100%);
+  }
+
+  /* Animated gradient background */
+  .gradient-animated {
+    background: linear-gradient(-45deg, #f6a54b, #e05270, #ab2549, #4d8776, #dcba39);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+  }
+
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Gradient text variations */
+  .gradient-text-sunset {
+    background: linear-gradient(135deg, #f6a54b 0%, #e05270 50%, #cc325a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-vibrant {
+    background: linear-gradient(135deg, #f38c28 0%, #e05270 50%, #4d8776 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-celebration {
+    background: linear-gradient(90deg, #f6a54b, #e05270, #ab2549, #4d8776, #dcba39);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Gradient borders */
+  .gradient-border {
+    position: relative;
+    background: white;
+  }
+
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 2px;
+    background: linear-gradient(135deg, #f6a54b, #e05270, #ab2549, #4d8776);
+    border-radius: inherit;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: xor;
+    -webkit-mask-composite: xor;
+    pointer-events: none;
+  }
+
+  /* Colorful glow effects */
+  .glow-saffron {
+    box-shadow: 0 0 30px rgba(246, 165, 75, 0.4);
+  }
+
+  .glow-burgundy {
+    box-shadow: 0 0 30px rgba(224, 82, 112, 0.4);
+  }
+
+  .glow-forest {
+    box-shadow: 0 0 30px rgba(77, 135, 118, 0.4);
+  }
+
+  .glow-multi {
+    box-shadow:
+      0 0 20px rgba(246, 165, 75, 0.3),
+      0 0 40px rgba(224, 82, 112, 0.2),
+      0 0 60px rgba(77, 135, 118, 0.1);
+  }
+
+  /* Colorful underline animation */
+  .underline-gradient {
+    position: relative;
+  }
+
+  .underline-gradient::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #f6a54b, #e05270, #4d8776);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+  }
+
+  .underline-gradient:hover::after {
+    width: 100%;
+  }
+
+  /* Rainbow divider */
+  .rainbow-divider {
+    height: 4px;
+    background: linear-gradient(90deg, #f6a54b 0%, #f38c28 15%, #e05270 30%, #ab2549 45%, #722039 60%, #4d8776 75%, #dcba39 90%, #cca32c 100%);
+    border-radius: 2px;
+  }
+
+  /* Colorful dot pattern */
+  .dots-colorful {
+    background-image:
+      radial-gradient(circle, #f6a54b 1px, transparent 1px),
+      radial-gradient(circle, #e05270 1px, transparent 1px),
+      radial-gradient(circle, #4d8776 1px, transparent 1px);
+    background-size: 60px 60px, 40px 40px, 80px 80px;
+    background-position: 0 0, 20px 20px, 40px 10px;
+  }
 }
 
 /* Smooth page transitions */

@@ -13,12 +13,23 @@ export default function Header() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="group flex items-center gap-3">
-            {/* Decorative element inspired by Indian motifs */}
+            {/* Decorative element inspired by Indian motifs - now with gradient colors */}
             <div className="relative w-10 h-10">
               <svg viewBox="0 0 40 40" className="w-full h-full">
-                <circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" strokeWidth="1" className="text-gold-500" />
-                <circle cx="20" cy="20" r="12" fill="none" stroke="currentColor" strokeWidth="1" className="text-gold-400" />
-                <circle cx="20" cy="20" r="6" fill="currentColor" className="text-gold-500" />
+                <defs>
+                  <linearGradient id="logoGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#f6a54b" />
+                    <stop offset="50%" stopColor="#e05270" />
+                    <stop offset="100%" stopColor="#4d8776" />
+                  </linearGradient>
+                  <linearGradient id="logoGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#e05270" />
+                    <stop offset="100%" stopColor="#dcba39" />
+                  </linearGradient>
+                </defs>
+                <circle cx="20" cy="20" r="18" fill="none" stroke="url(#logoGrad1)" strokeWidth="1.5" />
+                <circle cx="20" cy="20" r="12" fill="none" stroke="url(#logoGrad2)" strokeWidth="1" />
+                <circle cx="20" cy="20" r="6" fill="url(#logoGrad1)" />
                 {/* Lotus petals */}
                 {[0, 45, 90, 135, 180, 225, 270, 315].map((angle) => (
                   <ellipse
@@ -28,19 +39,18 @@ export default function Header() {
                     rx="3"
                     ry="6"
                     fill="none"
-                    stroke="currentColor"
+                    stroke="url(#logoGrad2)"
                     strokeWidth="1"
-                    className="text-gold-400"
                     transform={`rotate(${angle} 20 20)`}
                   />
                 ))}
               </svg>
             </div>
             <div>
-              <span className="font-display text-2xl font-semibold text-charcoal-900 tracking-wide">
+              <span className="font-display text-2xl font-semibold text-charcoal-900 tracking-wide group-hover:gradient-text-vibrant transition-all duration-300">
                 {storeInfo.name}
               </span>
-              <span className="hidden sm:block text-xs text-charcoal-500 font-body tracking-widest uppercase">
+              <span className="hidden sm:block text-xs font-body tracking-widest uppercase gradient-text-sunset">
                 {storeInfo.tagline}
               </span>
             </div>
@@ -54,7 +64,7 @@ export default function Header() {
             <NavLink href="/about">About</NavLink>
             <Link
               href={`mailto:${storeInfo.email}`}
-              className="px-6 py-2.5 bg-gradient-to-r from-gold-500 to-gold-600 text-white font-body text-sm font-medium rounded-full hover:from-gold-600 hover:to-gold-700 transition-all duration-300 shadow-md hover:shadow-lg"
+              className="px-6 py-2.5 bg-gradient-to-r from-saffron-500 via-burgundy-500 to-forest-500 text-white font-body text-sm font-medium rounded-full hover:from-saffron-600 hover:via-burgundy-600 hover:to-forest-600 transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105"
             >
               Contact
             </Link>
@@ -109,7 +119,7 @@ export default function Header() {
               </MobileNavLink>
               <Link
                 href={`mailto:${storeInfo.email}`}
-                className="mt-4 px-6 py-3 bg-gradient-to-r from-gold-500 to-gold-600 text-white font-body text-center font-medium rounded-full"
+                className="mt-4 px-6 py-3 bg-gradient-to-r from-saffron-500 via-burgundy-500 to-forest-500 text-white font-body text-center font-medium rounded-full"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Contact Us
@@ -126,10 +136,10 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
   return (
     <Link
       href={href}
-      className="relative font-body text-sm font-medium text-charcoal-700 hover:text-gold-600 transition-colors duration-300 group"
+      className="relative font-body text-sm font-medium text-charcoal-700 hover:text-burgundy-600 transition-colors duration-300 group"
     >
       {children}
-      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-gold-400 to-gold-600 group-hover:w-full transition-all duration-300" />
+      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-saffron-400 via-burgundy-500 to-forest-400 group-hover:w-full transition-all duration-300" />
     </Link>
   );
 }

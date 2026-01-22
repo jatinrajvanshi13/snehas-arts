@@ -1,5 +1,7 @@
 # Sneha's Arts - Project Documentation
 
+> **START HERE:** For session continuity and changelog, see `PROJECT_HISTORY.md` first. That file tracks all changes across sessions and must be updated whenever code is pushed to production.
+
 ## Project Overview
 
 **Sneha's Arts** is a premium online art store built for showcasing and selling handcrafted paintings and jewelry. The store blends Indian artistic heritage with Vancouver's West Coast aesthetic, creating a unique cultural fusion experience.

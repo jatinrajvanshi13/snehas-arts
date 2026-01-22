@@ -1,10 +1,11 @@
 import { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { storeInfo } from '@/lib/data';
 
 export const metadata: Metadata = {
-  title: 'Our Story | Ananya Arts',
-  description: 'Learn about the artist behind Ananya Arts and the cultural journey that inspires each handcrafted piece.',
+  title: "Our Story | Sneha's Arts",
+  description: "Learn about the artist behind Sneha's Arts and the cultural journey that inspires each handcrafted piece.",
 };
 
 export default function AboutPage() {
@@ -47,18 +48,20 @@ export default function AboutPage() {
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <div className="prose prose-lg max-w-none">
-            {/* Artist Portrait Placeholder */}
+            {/* Artist Portrait */}
             <div className="float-right ml-8 mb-8 w-72">
               <div className="ornate-border">
-                <div className="aspect-[3/4] rounded-xl bg-gradient-to-br from-saffron-100 via-cream-100 to-forest-100 flex items-center justify-center">
-                  <div className="text-center">
-                    <svg className="w-16 h-16 mx-auto text-gold-400/50 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={0.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                    </svg>
-                    <p className="font-accent text-charcoal-400 italic text-sm">The Artist</p>
-                  </div>
+                <div className="aspect-[3/4] rounded-xl overflow-hidden relative">
+                  <Image
+                    src="/paintings/snehastand.jpg"
+                    alt="Sneha - The Artist"
+                    fill
+                    className="object-cover"
+                    sizes="300px"
+                  />
                 </div>
               </div>
+              <p className="font-accent text-charcoal-500 italic text-sm text-center mt-3">Sneha, The Artist</p>
             </div>
 
             <p className="font-body text-charcoal-700 leading-relaxed mb-6">
